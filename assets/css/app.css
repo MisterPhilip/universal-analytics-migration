@@ -1,0 +1,66 @@
+h2:not(pre) > code[class*="language-"], h3:not(pre) > code[class*="language-"], h4:not(pre) > code[class*="language-"] {
+    background: transparent;
+}
+figure code {
+    font-size: .85em;
+}
+pre[class*="language-"] {
+    margin-top: 0;
+}
+figure {
+    margin: 0;
+}
+figcaption {
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: .95em;
+    background: #f5f2f0;
+    padding: 5px 0;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
+    color: #777;
+}
+pre {
+    border: 1px solid #ccc;
+    border-top: 0;
+}
+#snippets {
+    background-color: #FFF;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+#snippets > section {
+    padding-bottom: 20px;
+    padding-top: 40px;
+    margin-bottom: -20px;
+    border-bottom: 1px solid #eee;
+}
+#snippets > section:first-of-type {
+    padding-top: 10px;
+}
+#snippets > section:last-of-type {
+    border-bottom: 0;
+}
+body {
+    background: #E8E8E8 url('http://misterphilip.com/images/bg7.png');
+}
+nav.top-bar
+{
+    margin-bottom: 0;
+}
+ul, dl, ol
+{
+    margin-left: 1.5em;
+}
+footer {
+    padding: 40px 0;
+    font-size: .8em;
+    border-top: 1px dotted #ddd;
+    text-align: center;
+}
+[data-magellan-expedition] {
+    left: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}

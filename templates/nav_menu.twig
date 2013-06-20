@@ -1,0 +1,21 @@
+<nav class="top-bar">
+    <ul class="title-area">
+        <li class="name">
+             <h1><a href="./" title="About this guide">Migrating to Universal Analytics</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        {% block main_menu %}
+        <ul class="right">
+            {% for page in pages|keys %}
+            <li{% if page == current_page %} class="active"{% endif %}>
+                <a href="./{{page}}">{{pages[page]}}</a>
+            </li>
+            <li class="divider"></li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </section>
+</nav>

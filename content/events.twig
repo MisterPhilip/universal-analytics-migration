@@ -1,0 +1,140 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'events' %}
+{% block content %}
+<h2>Events</h2>
+<p>These are the various types of events available in Google Analytics.</p>
+{{ submenu({
+    '_trackEvent': '_trackEvent',
+    '_trackSocial': '_trackSocial'
+}) }}
+
+<section id="_trackEvent">
+    <h3><code>_trackEvent</code></h3>
+    <p>Sends an event to Google Analytics. This is usually done when a visitor interacts with your site.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackEvent', 'Category', 'Action']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'event', {
+    eventCategory: 'Category',
+      eventAction: 'Action'
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <p>Events can also include a label and a value:</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackEvent', 'Category', 'Action', 'Label', 50]); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'event', {
+    eventCategory: 'Category',
+      eventAction: 'Action',
+       eventLabel: 'Label',
+       eventValue: 50
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <p>You can also set whether or not the user's hit should be counted as a non-interaction with the site or not. If this is set to <code>true</code>, this event will not be factored in for bounce rate calculations.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackEvent', 'Category', 'Action', undefined, 50, true]); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>// Set the non-interaction flag...
+ga('set', 'nonInteraction', true);
+
+// ...then send in the event
+ga('send', 'event', {
+    eventCategory: 'Category',
+      eventAction: 'Action',
+       eventValue: 50
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+    
+</section>
+
+<section id="_trackSocial">
+    <h3><code>_trackSocial</code></h3>
+    <p>Tracks a social interaction done by the visitor.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackSocial', 'facebook', 'share']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'social', {
+    socialNetwork: 'facebook',
+     socialAction: 'share'
+})</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <p>You can also pass in what the visitor shared:</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackSocial', 'facebook', 'share', 'tagpla.net/foobar']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'social', {
+    socialNetwork: 'facebook',
+     socialAction: 'share',
+     socialTarget: 'tagpla.net/foobar'
+})</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

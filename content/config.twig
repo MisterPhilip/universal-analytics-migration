@@ -1,0 +1,155 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'config' %}
+{% block content %}
+<h2>Configuration</h2>
+<p>These are the various configuration options available, including cookie setup, campaign setup, and other miscellaneous options.</p>
+
+{{ submenu({
+    '_setDomainName': '_setDomainName',
+    '_setCookiePath': '_setCookiePath',
+    '_setSampleRate': '_setSampleRate',
+    '_setSiteSpeedSampleRate': '_setSiteSpeedSampleRate',
+    '_setVisitorCookieTimeout': '_setVisitorCookieTimeout'
+}) }}
+
+<section id="_setDomainName">
+    <h3><code>_setDomainName</code></h3>
+    <p>Sets the domain name for the Google Analytics cookies. Note that this option can only be passed when <code>create</code> (previously <code>_setAccount</code>) is called</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setDomainName', 'misterphilip.com']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+    cookieDomain: 'misterphilip.com'
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <div data-alert class="alert-box">Should you want to use the legacy cookies (from ga.js), you'll also want to populate the <code>legacyCookieDomain</code> setting:</div>
+    <div class="row">
+        <div class="large-6 columns push-6">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+          cookieDomain: 'misterphilip.com',
+    legacyCookieDomain: 'misterphilip.com'
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+    
+</section>
+
+<section id="_setCookiePath">
+    <h3><code>_setCookiePath</code></h3>
+    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and it is not recommended that this be changed.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setCookiePath', '/path/to/cookies']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+    cookiePath: '/path/to/cookies'
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_setSampleRate">
+    <h3><code>_setSampleRate</code></h3>
+    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and is recommended to not change.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setSampleRate', '80']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+    sampleRate: 80
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_setSiteSpeedSampleRate">
+    <h3><code>_setSiteSpeedSampleRate</code></h3>
+    <p>This determines how often site speed tracking beacons should be sent. Defaults to 1% of visitors</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setSiteSpeedSampleRate', '5']); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+    siteSpeedSampleRate: 5
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_setVisitorCookieTimeout">
+    <h3><code>_setVisitorCookieTimeout</code></h3>
+    <p>Sets when the visitor cookie should expire. Defaults to 2 years.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setVisitorCookieTimeout', 31540000000]); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {
+cookieExpires: 31540000000
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

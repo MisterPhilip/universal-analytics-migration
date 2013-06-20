@@ -1,0 +1,100 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'variables' %}
+{% block content %}
+<h2>Custom Variables</h2>
+<p>Custom variables are now split into custom dimensions and custom metrics. This allows more flexibility, and you get an increased number of each (currently 20 of each totaling 40, up from 5 for the free version).</p>
+<hr>
+<section id="_setCustomVar">
+    <h3><code>_setCustomVar</code></h3>
+    <p>Sets the custom variable to your specifications. In analytics.js, you need to decide if your custom variable is a metric or a dimension (<a href="https://support.google.com/analytics/answer/1033861" target="_blank">more on this</a>). Once this is done, you'll need to <a href="https://support.google.com/analytics/answer/2709829" target="_blank">set it up within the interface</a> before you can use it. <strong>Both custom variables and custom metrics / dimensions need to be sent with or before an event</strong>.</p>
+    
+    <p>It should be noted that we actually called it 2 different ways in the analytics.js examples below. The first example used the "set" method. This allows all following "send" events (pageview, social, events, etc.) to utilize the dimensions and metrics. The second example passes it within the "send" event itself. This makes those dimensions and metrics available to <em>only that send call</em>. This is important to consider and will vary depending on what you're sending in. Below, we made the appropriate choice to send in the image information with the image upload event as it only pertained to that image and would not be useful to any other calls on the page, unlike the information about the visitor in the first example.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>// "Dimension" example, what user group is the visitor in?
+_gaq.push(['_setCustomVar',
+    1,              // Index (custom var #)*
+    'user group',   // Name*
+    'admin',        // Value*
+    3               // Scope
+]);
+
+// "Metric" example, how many hosted images do they have?
+_gaq.push(['_setCustomVar',
+    5,              // Index (custom var #)*
+    'image count',  // Name*
+    '953',          // Value*
+    3               // Scope
+]);
+
+_gaq(['_trackPageview']);
+
+// * Designates the required items</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>// Custom Dimension, what user group is the visitor in?
+ga('set', 'dimension1', 'admin');
+
+// Custom Metric, how many hosted images do they have?
+ga('set', 'metric5', 953);
+
+ga('send', 'pageview');
+</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <p>Note that we sent that along with a pageview request. We can also populate it with an event request:</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>// "Dimension" example, what was the file type of the image?
+_gaq.push(['_setCustomVar',
+    2,              // Index (custom var #)*
+    'image type',   // Name*
+    'png',          // Value*
+    3               // Scope
+]);
+
+// "Metric" example, how large was the image (in kb)?
+_gaq.push(['_setCustomVar',
+    4,              // Index (custom var #)*
+    'image size',   // Name*
+    '356',          // Value*
+    3               // Scope
+]);
+
+// User uploaded a new image
+_gaq(['_trackEvent', 'images', 'upload']);
+
+// * Designates the required items</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>// User uploaded a new image
+ga('send', 'event', 'images', 'upload', {
+    dimension3: 'png',  // What was the file type of the image?
+    metric4: 953        // How large was the image (in kb)?
+});
+</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

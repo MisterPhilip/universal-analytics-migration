@@ -1,0 +1,71 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'index' %}
+{% block content %}
+<h2>About this guide</h2>
+<p>Universal Analytics is currently an open beta of the new version of Google Analytics. It includes many new, great features. However, new features come at the cost of new code and the need to rewrite some items. The goal of this guide is to help developers understand the difference between the code bases.</p>
+{{ submenu({
+    'basics': 'The Basics',
+    'config': 'Configuration',
+    'events': 'Event Tracking',
+    'ecommerce': 'Ecommerce',
+    'variables': 'Custom Variables',
+    'misc': 'Other Items'
+}) }}
+
+<section id="basics">
+    <h3>The Basics</h3>
+    <p>This chapter goes over the overall basics that you'd find within every single implementation. Items covered:</p>
+    <ol>
+        <li><a href="./basics#globalCode">The code block included on every page</a></li>
+        <li><a href="./basics#_setAccount">_setAccount</a></li>
+        <li><a href="./basics#_trackPageview">_trackPageview</a></li>
+    </ol>
+</section>
+
+<section id="config">
+    <h3>Configuration</h3>
+    <p>This chapter goes over some of the more common options. Items covered:</p>
+    <ol>
+        <li><a href="./config#_setDomainName">_setDomainName</a></li>
+        <li><a href="./config#_setCookiePath">_setCookiePath</a></li>
+        <li><a href="./config#_setSampleRate">_setSampleRate</a></li>
+        <li><a href="./config#_setSiteSpeedSampleRate">_setSiteSpeedSampleRate</a></li>
+        <li><a href="./config#_setVisitorCookieTimeout">_setVisitorCookieTimeout</a></li>
+    </ol>
+</section>
+
+<section id="events">
+    <h3>Event Tracking</h3>
+    <p>This goes over both the _trackEvent and _trackSocial methods.</p>
+    <ol>
+        <li><a href="./events#_trackEvent">_trackEvent</a></li>
+        <li><a href="./events#_trackSocial">_trackSocial</a></li>
+    </ol>
+</section>
+
+<section id="ecommerce">
+    <h3>Ecommerce</h3>
+    <p>This chapter details methods related to ecommerce tracking. Items covered:</p>
+    <ol>
+        <li><a href="./ecommerce#_addTrans">_addTrans</a></li>
+        <li><a href="./ecommerce#_addItem">_addItem</a></li>
+        <li><a href="./ecommerce#_trackTrans">_trackTrans</a></li>
+        <li><a href="./ecommerce#example">A full example of a shopping cart confirmation page</a></li>
+    </ol>
+</section>
+
+<section id="variables">
+    <h3>Custom Variables</h3>
+    <p>This chapter only covers one item: <a href="./variables">_setCustomVar</a></p>
+</section>
+
+<section id="misc">
+    <h3>Other items</h3>
+    <p>This chapter goes over things that didn't really fit in other chapters. Items covered:</p>
+    <ol>
+        <li><a href="./misc#crossDomain">Cross domain tracking</a></li>
+        <li><a href="./misc#_trackTiming">_trackTiming</a></li>
+        <li><a href="./misc#_anonymizeIp">_anonymizeIp</a></li>
+    </ol>
+</section>
+{% endblock %}
