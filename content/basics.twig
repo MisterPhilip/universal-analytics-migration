@@ -1,0 +1,133 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'basics' %}
+{% block content %}
+<h2>The Basics</h2>
+
+<p>These are the basic code snippets you'd find within every Google Analytics implementation.</p>
+{{ submenu({
+    'globalCode': 'Code block',
+    '_setAccount': '_setAccount',
+    '_trackPageview': 'Event Tracking'
+}) }}
+
+<section id="globalCode">
+    <h3>Code block</h3>
+    <p>The code block that calls Google's servers for the JavaScript file has changed, as has the order of how it is executed.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code class="language-markup">&lt;script type="text/javascript"&gt;
+                            
+  var _gaq = _gaq || [];
+  
+  // Your tracking calls here. e.g.:
+  _gaq.push(['_setAccount', 'UA-XXXXX-Y']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+&lt;/script&gt;</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code class="language-markup">&lt;script&gt;
+                            
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    // Your tracking calls here. e.g.:
+    ga('create', 'UA-XXXXX-Y');
+    ga('send', 'pageview');
+  
+&lt;/script&gt;</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_setAccount">
+    <h3><code>_setAccount</code></h3>
+    <p>This sets the property ID so the code knows where to send the data</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_setAccount', 'UA-XXXXX-Y']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y');</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_trackPageview">
+    <h3><code>_trackPageview</code></h3>
+    <p>Send in a basic pageview</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackPageview']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'pageview');</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br />
+    <p>You can also send in custom page names, overriding the default (the current URL)</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackPageview','/my-custom-page']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'pageview', '/my-custom-page');
+
+// OR:
+
+ga('send', {
+  'hitType': 'pageview',
+     'page': '/my-custom-page'
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

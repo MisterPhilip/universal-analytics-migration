@@ -1,0 +1,232 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'ecommerce' %}
+{% block content %}
+<h2>Ecommerce</h2>
+<p>Ecommerce entails tracking for transactions completed by the visitor.</p>
+{{ submenu({
+    '_addTrans': '_addTrans',
+    '_addItem': '_addItem',
+    '_trackTrans': '_trackTrans',
+    'example': 'Full Example'
+}) }}
+
+<section id="note">
+    <div data-alert class="alert-box">In analytics.js, you need to include the following line of code before you call any ecommerce methods.</div>
+    <figure>
+        <figcaption>
+            analytics.js
+        </figcaption>
+        <pre><code>ga('require', 'ecommerce', 'ecommerce.js');</code></pre>
+    </figure>
+    <p>Below is an example of where you should include it:</p>
+    <figure>
+        <figcaption>
+            analytics.js
+        </figcaption>
+        <pre><code>ga('create', 'UA-XXXXX-Y');
+ga('send', 'pageview');
+
+// Any other calls you might have
+
+ga('require', 'ecommerce', 'ecommerce.js');
+
+// ecommerce stuff goes here</code></pre>
+    </figure>
+</section>
+<section id="_addTrans">
+    <h3><code>_addTrans</code></h3>
+    <p>Initiates a transaction. Note that the City, State and Country fields have been removed, and the total is no longer required.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_addTrans',
+    '1234abc',      // Transaction ID*
+    'Tech Parts',   // Affiliation
+    '45.00',        // Total* (no tax or shipping)
+    '4.50',         // Tax
+    '10.00',        // Shipping
+    'Austin',       // City
+    'Texas',        // State or province
+    'USA'           // Country
+]);
+// * Designates the required items</code></pre>
+                        </figure>
+                    </div>
+                    <div class="large-6 columns">
+                        <figure>
+                            <figcaption>
+                                via analytics.js
+                            </figcaption>
+                            <pre><code>ga('ecommerce:addTransaction', {
+             id: '1234abc',     // Transaction ID*
+    affiliation: 'Tech Parts',  // Store Name
+        revenue: '59.50',       // Total
+       shipping: '10',          // Shipping
+            tax: '4.50'         // Tax
+});
+// * Designates the required items</code></pre>
+            </figure>
+        </div>
+    </div>                
+</section>
+
+<section id="_addItem">
+    <h3><code>_addItem</code></h3>
+    <p>Adds an item to the transaction. Do note that the required fields have changed.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_addItem',
+    '1234abc',          // Transaction ID
+    'ABC123',           // Product SKU / Code*
+    'Awesome Shirt',    // Product Name*
+    'Men\'s Shirts',    // Product Category
+    '12.99',            // Price*
+    '2'                 // Quantity*    
+]);
+// * Designates the required items</code></pre>
+                        </figure>
+                    </div>
+                    <div class="large-6 columns">
+                        <figure>
+                            <figcaption>
+                                via analytics.js
+                            </figcaption>
+                            <pre><code>ga('ecommerce:addItem', {
+          id: '1234abc',        // Transaction ID*
+         sku: 'ABC123',         // Product SKU
+        name: 'Awesome Shirt',  // Product Name*
+    category: 'Men\'s Shirts',  // Product Category
+    quantity: '2'               // Quantity
+});
+// * Designates the required items</code></pre>
+            </figure>
+        </div>
+    </div>      
+</section>
+
+<section id="_trackTrans">
+    <h3><code>_trackTrans</code></h3>
+    <p>Sends the transaction to Google Analytics.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackTrans']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('ecommerce:send');</code></pre>
+            </figure>
+        </div>
+    </div>      
+</section>
+
+<section id="example">
+    <h3>A full example</h3>
+    <p>Since ecommerce can be a more complex subject with Google Analytics, the following is a full example of what a sample implementation might look like.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>// Create the tracker
+_gaq.push(['_setAccount', 'UA-XXXXX-Y']);
+
+// Fire off a pageview
+_gaq.push(['_trackPageview']);
+
+// Initialize the transaction
+_gaq.push(['_addTrans',
+    '1234abc',      // Transaction ID*
+    'Tech Shirts',  // Affiliation
+    '38.97',        // Total* (no tax or shipping)
+    '3.22',         // Tax
+    '10.00',        // Shipping
+    'Austin',       // City
+    'Texas',        // State or province
+    'USA'           // Country
+]);
+
+// Add a few items
+_gaq.push(['_addItem',
+    '1234abc',          // Transaction ID
+    'TSHIRT-12A',       // Product SKU / Code*
+    'Analytics Wizard', // Product Name*
+    'Men\'s Shirts',    // Product Category
+    '12.99',            // Price*
+    '2'                 // Quantity*    
+]);
+_gaq.push(['_addItem',
+    '1234abc',          // Transaction ID
+    'TSHIRT-36B',       // Product SKU / Code*
+    'Best Developer',   // Product Name*
+    'Women\'s Shirts',  // Product Category
+    '12.99',            // Price*
+    '1'                 // Quantity*    
+]);
+
+// Send off the transaction
+_gaq.push(['_trackTrans']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>// Create the tracker
+ga('create', 'UA-XXXXX-Y');
+
+// Fire off a pageview
+ga('send', 'pageview');
+
+// Include the ecommerce plugin
+ga('require', 'ecommerce', 'ecommerce.js');
+
+// Initialize the transaction
+ga('ecommerce:addTransaction', {
+             id: '1234abc',     // Transaction ID*
+    affiliation: 'Tech Shirts', // Store Name
+        revenue: '52.19',       // Total
+       shipping: '10',          // Shipping
+            tax: '3.22'         // Tax
+});
+
+// Add a few items
+ga('ecommerce:addItem', {
+          id: '1234abc',            // Transaction ID*
+         sku: 'TSHIRT-12A',         // Product SKU
+        name: 'Analytics Wizard',   // Product Name*
+    category: 'Men\'s Shirts',      // Product Category
+    quantity: '1'                   // Quantity
+});
+ga('ecommerce:addItem', {
+          id: '1234abc',            // Transaction ID*
+         sku: 'TSHIRT-36B',         // Product SKU
+        name: 'Best Developer',     // Product Name*
+    category: 'Women\'s Shirts',    // Product Category
+    quantity: '2'                   // Quantity
+});
+
+// Send off the transaction
+ga('ecommerce:send');
+</code></pre>
+            </figure>
+        </div>
+    </div>      
+</section>
+{% endblock %}

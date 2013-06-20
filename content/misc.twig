@@ -1,0 +1,76 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'misc' %}
+{% block content %}
+<h2>Other items</h2>
+<p>These are other items that don't quite fit into the other categories.</p>
+{{ submenu({
+    'crossDomain': 'Cross-domain',
+    '_trackTiming': '_trackTiming',
+    '_anonymizeIp': '_anonymizeIp'
+}) }}
+
+<section id="crossDomain">
+    <h3>Cross-domain</h3>
+    <p>Cross-domain tracking has changed drastically with the new client ID and the way links are decorated. It is highly suggested you <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cross-domain" target="_blank">read up on Universal Analytics' cross-domain tracking</a>. This guide will likely be updated to include this at a later date.</p>
+</section>
+
+<section id="_trackTiming">
+    <h3><code>_trackTiming</code></h3>
+    <p>This allows you to time how long it takes for users to do or see something on your site.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_trackTiming', 'JavaScript Libraries', 'jQuery', 55]); </code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send' ,'timing', 'JavaScript libraries', 'jQuery', 55);</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="_anonymizeIp">
+    <h3><code>_anonymizeIp</code></h3>
+    <p>Anonymizes the information sent to Google Analytics by removing the last octet of the IP address prior to its storage.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push (['_gat._anonymizeIp']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('set', 'anonymizeIp', true);</code></pre>
+            </figure>
+        </div>
+    </div>
+    <br>
+    <p>You can also anonymize for a single hit in analytics.js:</p>
+    <div class="row">
+        <div class="large-6 columns push-6">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('send', 'pageview', {
+    'anonymizeIp': true
+});</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+{
+    "require": 
+    {
+        "trq/gen": "dev-master"
+    }
+}
