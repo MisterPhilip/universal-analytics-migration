@@ -23,6 +23,7 @@ class UniversalAnalyticsMigrationExtension extends ExtensionBase
         {
             $html.= '<div data-magellan-expedition="fixed">';
             $html.= '    <dl class="sub-nav">';
+            $html.= '        <dd><strong>In this chapter:</strong></dd>';
             $i = 0;
             foreach($menuItems as $id => $name)
             {
