@@ -8,7 +8,7 @@
     <h3><code>_setCustomVar</code></h3>
     <p>Sets the custom variable to your specifications. In analytics.js, you need to decide if your custom variable is a metric or a dimension (<a href="https://support.google.com/analytics/answer/1033861" target="_blank">more on this</a>). Once this is done, you'll need to <a href="https://support.google.com/analytics/answer/2709829" target="_blank">set it up within the interface</a> before you can use it. <strong>Both custom variables and custom metrics / dimensions need to be sent with or before an event</strong>.</p>
     
-    <p>It should be noted that we actually called it 2 different ways in the analytics.js examples below. The first example used the "set" method. This allows all following "send" events (pageview, social, events, etc.) to utilize the dimensions and metrics. The second example passes it within the "send" event itself. This makes those dimensions and metrics available to <em>only that send call</em>. This is important to consider and will vary depending on what you're sending in. Below, we made the appropriate choice to send in the image information with the image upload event as it only pertained to that image and would not be useful to any other calls on the page, unlike the information about the visitor in the first example.</p>
+    <p>It should be noted that we actually call it 2 different ways in the analytics.js examples below. The first example uses the "set" method. This allows all following "send" events (pageview, social, events, etc.) to utilize the dimensions and metrics. The second example passes it within the "send" event itself. This makes those dimensions and metrics available to <em>only that send call</em>. This is important to consider and will vary depending on what you're sending in. Below, we have made the appropriate choice to send in the image information with the image upload event as it only pertained to that image and would not be useful to any other calls on the page, unlike the information about the visitor in the first example.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -53,7 +53,7 @@ ga('send', 'pageview');
         </div>
     </div>
     <br>
-    <p>Note that we sent that along with a pageview request. We can also populate it with an event request:</p>
+    <p>Note that we send that along with a pageview request. We can also populate it with an event request.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
