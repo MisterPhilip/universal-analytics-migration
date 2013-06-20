@@ -14,7 +14,7 @@
 
 <section id="_setDomainName">
     <h3><code>_setDomainName</code></h3>
-    <p>Sets the domain name for the Google Analytics cookies. Note that this option can only be passed when <code>create</code> (previously <code>_setAccount</code>) is called</p>
+    <p>Sets the domain name for the Google Analytics cookies. Note that this option can only be passed when <code>create</code> (previously <code>_setAccount</code>) is called.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -55,7 +55,7 @@
 
 <section id="_setCookiePath">
     <h3><code>_setCookiePath</code></h3>
-    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and it is not recommended that this be changed.</p>
+    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and it is recommended that this not be changed.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -80,7 +80,7 @@
 
 <section id="_setSampleRate">
     <h3><code>_setSampleRate</code></h3>
-    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and is recommended to not change.</p>
+    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and it is recommended that this not be changed.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -105,7 +105,7 @@
 
 <section id="_setSiteSpeedSampleRate">
     <h3><code>_setSiteSpeedSampleRate</code></h3>
-    <p>This determines how often site speed tracking beacons should be sent. Defaults to 1% of visitors</p>
+    <p>This determines how often site speed tracking beacons should be sent. The integer argument defines the percentage and defaults to 1% of visitors.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -130,14 +130,14 @@
 
 <section id="_setVisitorCookieTimeout">
     <h3><code>_setVisitorCookieTimeout</code></h3>
-    <p>Sets when the visitor cookie should expire. Defaults to 2 years.</p>
+    <p>Sets when the visitor cookie should expire, in milliseconds. Defaults to 2 years.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
                 <figcaption>
                     via ga.js
                 </figcaption>
-                <pre><code>_gaq.push(['_setVisitorCookieTimeout', 31540000000]); </code></pre>
+                <pre><code>_gaq.push(['_setVisitorCookieTimeout', 63113900000]); </code></pre>
             </figure>
         </div>
         <div class="large-6 columns">
@@ -146,7 +146,7 @@
                     via analytics.js
                 </figcaption>
                 <pre><code>ga('create', 'UA-XXXXX-Y', {
-cookieExpires: 31540000000
+cookieExpires: 63113900000
 });</code></pre>
             </figure>
         </div>
