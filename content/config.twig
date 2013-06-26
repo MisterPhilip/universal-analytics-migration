@@ -80,7 +80,7 @@
 
 <section id="_setSampleRate">
     <h3><code>_setSampleRate</code></h3>
-    <p>Sets the path to the Google Analytics cookie. By default this is in the root (<code>/</code>) and it is recommended that this not be changed.</p>
+    <p>Sets the sample rate; great for those with heavy traffic spikes. The value passed in should be a numeric string as a whole percentage.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -146,7 +146,7 @@
                     via analytics.js
                 </figcaption>
                 <pre><code>ga('create', 'UA-XXXXX-Y', {
-cookieExpires: 63113900000
+    cookieExpires: 63113900000
 });</code></pre>
             </figure>
         </div>
