@@ -7,7 +7,8 @@
 {{ submenu({
     'globalCode': 'Code block',
     '_setAccount': '_setAccount',
-    '_trackPageview': 'Event Tracking'
+    '_trackPageview': '_trackPageview',
+    'multipleAccounts': 'Multiple Accounts'
 }) }}
 
 <section id="globalCode">
@@ -130,4 +131,32 @@ ga('send', {
         </div>
     </div>
 </section>
+
+<section id="multipleAccounts">
+    <h3>Multiple Accounts</h3>
+    <p>In order to host multiple Universal Analytics accounts on the same page, you need to define a namespace to work within for the trackers. One can remain the default, with no namespace, but the rest <em>must</em> have a namespace. 
+    Previously, this namespace would be set on every request, prefixing the method. Now in Universal Analytics, you must set it within the 'create' call (using the <code>name</code> property) and then prefix all of the following methods.</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['foo._setAccount', 'UA-XXXXX-Y']);
+_gaq.push(['foo._trackPageview']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('create', 'UA-XXXXX-Y', {'name': 'foo'});
+ga('foo.send', 'pageview');</code></pre>
+            </figure>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
