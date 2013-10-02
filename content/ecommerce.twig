@@ -7,7 +7,8 @@
     '_addTrans': '_addTrans',
     '_addItem': '_addItem',
     '_trackTrans': '_trackTrans',
-    'example': 'Full Example'
+    'example': 'Full Example',
+    '_clearTrans': '_clearTrans'
 }) }}
 
 <section id="note">
@@ -228,6 +229,29 @@ ga('ecommerce:addItem', {
 // Send off the transaction
 ga('ecommerce:send');
 </code></pre>
+            </figure>
+        </div>
+    </div>      
+</section>
+
+<section id="_clearTrans">
+    <h3><code>_clearTrans</code></h3>
+    <p>Clears all transaction data. This was an undocumented feature in ga.js, but it's <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#clearingData">now documented</a> for analytics.js!</p>
+    <div class="row">
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via ga.js
+                </figcaption>
+                <pre><code>_gaq.push(['_clearTrans']);</code></pre>
+            </figure>
+        </div>
+        <div class="large-6 columns">
+            <figure>
+                <figcaption>
+                    via analytics.js
+                </figcaption>
+                <pre><code>ga('ecommerce:clear');</code></pre>
             </figure>
         </div>
     </div>      
