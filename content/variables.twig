@@ -6,9 +6,19 @@
 <hr>
 <section id="_setCustomVar">
     <h3><code>_setCustomVar</code></h3>
-    <p>Sets the custom variable to your specifications. In analytics.js, you need to decide if your custom variable is a metric or a dimension (<a href="https://support.google.com/analytics/answer/1033861" target="_blank">more on this</a>). Once this is done, you'll need to <a href="https://support.google.com/analytics/answer/2709829" target="_blank">set it up within the interface</a> before you can use it. <strong>Both custom variables and custom metrics / dimensions need to be sent with or before an event</strong>.</p>
+    <p>Sets the custom variable to your specifications. In analytics.js, you need to decide if your custom 
+    variable is a metric or a dimension (<a href="https://support.google.com/analytics/answer/1033861" target="_blank">more on this</a>). 
+    Once this is done, you'll need to <a href="https://support.google.com/analytics/answer/2709829" target="_blank">set it up within the interface</a> 
+    before you can use it. <strong>Both custom variables and custom metrics / dimensions need to be sent with or before an event</strong>.</p>
     
-    <p>It should be noted that we actually call it 2 different ways in the analytics.js examples below. The first example uses the "set" method. This allows all following "send" events (pageview, social, events, etc.) to utilize the dimensions and metrics. The second example passes it within the "send" event itself. This makes those dimensions and metrics available to <em>only that send call</em>. This is important to consider and will vary depending on what you're sending in. Below, we have made the appropriate choice to send in the image information with the image upload event as it only pertained to that image and would not be useful to any other calls on the page, unlike the information about the visitor in the first example.</p>
+    <p>It should be noted that we actually call it 2 different ways in the analytics.js examples below. 
+    The first example uses the "set" method. This allows all of the following "send" events 
+    (pageview, social, events, etc.) to utilize the dimensions and metrics until the visitor visits the next 
+    page or until the tracker object expires. The second example passes it within the "send" event itself. 
+    This makes those dimensions and metrics available to <em>only that one send call</em>. This is important to 
+    consider and will vary depending on what you're sending in. Below, we have made the appropriate choice 
+    to send in the image information with the image upload event as it only pertained to that image and would 
+    not be useful to any other calls on the page, unlike the information about the visitor in the first example.</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -41,7 +51,13 @@ _gaq(['_trackPageview']);
                 <figcaption>
                     via analytics.js
                 </figcaption>
-                <pre><code>// Custom Dimension, what user group is the visitor in?
+                <pre><code>/*
+ * We want these values passed in with all calls on this page
+ * because in this case, it is information about the user.
+ * Therefore, we'll use the 'set' command
+ */
+
+// Custom Dimension, what user group is the visitor in?
 ga('set', 'dimension1', 'admin');
 
 // Custom Metric, how many hosted images do they have?
@@ -53,7 +69,7 @@ ga('send', 'pageview');
         </div>
     </div>
     <br>
-    <p>Note that we send that along with a pageview request. We can also populate it with an event request.</p>
+    <p>Now let's see what it looks like when you're pushing the dimensions &amp; metrics in via a send command&hellip;</p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -87,9 +103,14 @@ _gaq(['_trackEvent', 'images', 'upload']);
                 <figcaption>
                     via analytics.js
                 </figcaption>
-                <pre><code>// User uploaded a new image
+                <pre><code>/*
+ * In this example, we'll pretend a user uploaded a new image.
+ * We want these values passed in for only this call
+ * because in this case, it is information about the event itself.
+ * Therefore, we'll pass the values in via the 'send' command
+ */
 ga('send', 'event', 'images', 'upload', {
-    dimension3: 'png',  // What was the file type of the image?
+    dimension2: 'png',  // What was the file type of the image?
     metric4: 953        // How large was the image (in kb)?
 });
 </code></pre>
