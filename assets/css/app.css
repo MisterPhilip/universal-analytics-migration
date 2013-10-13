@@ -64,3 +64,42 @@ footer {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
+
+/* 
+ * Fonts thanks to http://icomoon.io/'s awesome app
+ */
+@font-face {
+	font-family: 'icomoon-ultimate';
+	src:url('./icomoon-ultimate.eot');
+	src:url('./icomoon-ultimate.eot?#iefix') format('embedded-opentype'),
+		url('./icomoon-ultimate.woff') format('woff'),
+		url('./icomoon-ultimate.ttf') format('truetype'),
+		url('./icomoon-ultimate.svg#icomoon-ultimate') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+.icon-github, .icon-new-tab, .icon-link, .icon-notification, .icon-notification-2 {
+	font-family: 'icomoon-ultimate';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-github:before {
+	content: "\e001";
+}
+.icon-new-tab:before {
+	content: "\e000";
+}
+.icon-link:before {
+	content: "\e002";
+}
+.icon-notification:before {
+	content: "\e003";
+}
+.icon-notification-2:before {
+	content: "\e004";
+}
