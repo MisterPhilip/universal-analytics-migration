@@ -12,7 +12,7 @@
 }) }}
 
 <section id="note">
-    <div data-alert class="alert-box">In analytics.js, you need to include the following line of code before you call any ecommerce methods.</div>
+    <div data-alert class="alert-box"><i class="icon-notification"></i> In analytics.js, you need to include the following line of code before you call any ecommerce methods.</div>
     <figure>
         <figcaption>
             analytics.js
@@ -35,7 +35,7 @@ ga('require', 'ecommerce', 'ecommerce.js');
     </figure>
 </section>
 <section id="_addTrans">
-    <h3><code>_addTrans</code></h3>
+    <h3><code>_addTrans</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addTrans" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>Initiates a transaction. Note that the City, State and Country fields have been removed, and the total is no longer required.</p>
     <div class="row">
         <div class="large-6 columns">
@@ -75,7 +75,7 @@ ga('require', 'ecommerce', 'ecommerce.js');
 </section>
 
 <section id="_addItem">
-    <h3><code>_addItem</code></h3>
+    <h3><code>_addItem</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addItem" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>Adds an item to the transaction. Do note that the required fields have changed.</p>
     <div class="row">
         <div class="large-6 columns">
@@ -114,7 +114,7 @@ ga('require', 'ecommerce', 'ecommerce.js');
 </section>
 
 <section id="_trackTrans">
-    <h3><code>_trackTrans</code></h3>
+    <h3><code>_trackTrans</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#sendingData" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>Sends the transaction to Google Analytics.</p>
     <div class="row">
         <div class="large-6 columns">
@@ -235,7 +235,7 @@ ga('ecommerce:send');
 </section>
 
 <section id="_clearTrans">
-    <h3><code>_clearTrans</code></h3>
+    <h3><code>_clearTrans</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#clearingData" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>Clears all transaction data. This was an undocumented feature in ga.js, but it's <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#clearingData">now documented</a> for analytics.js!</p>
     <div class="row">
         <div class="large-6 columns">

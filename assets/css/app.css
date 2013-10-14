@@ -103,3 +103,8 @@ footer {
 .icon-notification-2:before {
 	content: "\e004";
 }
+.icon-small {
+    font-size: .6em;
+    vertical-align: middle; /* eww */
+    display: inline-block;
+}

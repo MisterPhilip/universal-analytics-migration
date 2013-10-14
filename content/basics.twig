@@ -12,7 +12,7 @@
 }) }}
 
 <section id="globalCode">
-    <h3>Code block</h3>
+    <h3>Code block <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/#quickstart" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>The code block that calls Google's servers for the JavaScript file has changed, as has the order of how it is executed.</p>
     <div class="row">
         <div class="large-6 columns">
@@ -60,8 +60,8 @@
 </section>
 
 <section id="_setAccount">
-    <h3><code>_setAccount</code></h3>
-    <p>This sets the property ID so the code knows where to send the data.</p>
+    <h3><code>_setAccount</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#creation" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
+    <p>This sets the property ID so the code knows where to send the data. </p>
     <div class="row">
         <div class="large-6 columns">
             <figure>
@@ -83,7 +83,7 @@
 </section>
 
 <section id="_trackPageview">
-    <h3><code>_trackPageview</code></h3>
+    <h3><code>_trackPageview</code> <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/pages#implementation" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>Send in a basic pageview</p>
     <div class="row">
         <div class="large-6 columns">
@@ -133,7 +133,7 @@ ga('send', {
 </section>
 
 <section id="multipleAccounts">
-    <h3>Multiple Accounts</h3>
+    <h3>Multiple Accounts <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#multipletrackers" title="Official Documentation"><i class="icon-link icon-small"></i></a></h3>
     <p>In order to host multiple Universal Analytics accounts on the same page, you need to define a namespace to work within for the trackers. One can remain the default, with no namespace, but the rest <em>must</em> have a namespace. 
     Previously, this namespace would be set on every request, prefixing the method. Now in Universal Analytics, you must set it within the 'create' call (using the <code>name</code> property) and then prefix all of the following methods.</p>
     <div class="row">
