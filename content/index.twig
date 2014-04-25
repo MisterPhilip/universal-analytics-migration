@@ -2,14 +2,22 @@
 {% set current_page = 'index' %}
 {% block content %}
 <h2>About this guide</h2>
-<p>Universal Analytics is currently an open beta of the new version of Google Analytics. It includes many new, great features. However, new features come at the cost of new code and the need to rewrite some items. The goal of this guide is to help developers understand the difference between the code bases.</p>
+<p>Universal Analytics is currently the new version of Google Analytics (recently out of beta), which includes many new &amp; great features.
+However, new features come at the cost of new code and the need to rewrite some items.  
+The goal of this guide is to help developers understand the difference between the code bases.
+Look for the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/" title="Official Documentation"><i class="icon-link"></i></a> icon for links directly to Google's official documentation for that subject.</p>
+<p><strong>Note:</strong> As of April 2014, analytics.js (Universal Analytics) includes all of the features that ga.js (older Google Analytics)
+ and now allows upgrading ga.js reporting to analytics.js reporting!</p>
+ <div data-alert class="alert-box"><i class="icon-notification"></i> Google has released the <a href="https://developers.google.com/analytics/devguides/collection/upgrade/reference/gajs-analyticsjs" style="color:white;text-decoration: underline;">official code migration guide</a>.</div>
 {{ submenu({
     'basics': 'The Basics',
     'config': 'Configuration',
     'events': 'Event Tracking',
     'ecommerce': 'Ecommerce',
+    'display': 'Display Features',
     'variables': 'Custom Variables',
-    'misc': 'Other Items'
+    'misc': 'Other Items',
+    'changelog': 'Change Log'
 }) }}
 
 <section id="basics">
@@ -19,6 +27,7 @@
         <li><a href="./basics#globalCode">The code block included on every page</a></li>
         <li><a href="./basics#_setAccount">_setAccount</a></li>
         <li><a href="./basics#_trackPageview">_trackPageview</a></li>
+        <li><a href="./basics#multipleAccounts">Multiple Accounts</a></li>
     </ol>
 </section>
 
@@ -51,6 +60,16 @@
         <li><a href="./ecommerce#_addItem">_addItem</a></li>
         <li><a href="./ecommerce#_trackTrans">_trackTrans</a></li>
         <li><a href="./ecommerce#example">A full example of a shopping cart confirmation page</a></li>
+        <li><a href="./ecommerce#_clearTrans">_clearTans</a></li>
+    </ol>
+</section>
+
+<section id="display">
+    <h3>Display Features</h3>
+    <p>This goes over the remarketing features.</p>
+    <ol>
+        <li><a href="./display#cookieName">Cookie Name</a></li>
+        <li><a href="./display#multipleTrackers">Multiple Trackers</a></li>
     </ol>
 </section>
 
@@ -67,5 +86,32 @@
         <li><a href="./misc#_trackTiming">_trackTiming</a></li>
         <li><a href="./misc#_anonymizeIp">_anonymizeIp</a></li>
     </ol>
+</section>
+
+<section id="changelog">
+    <h3>Change Log</h3>
+    <p>Below is a brief overview of the changes made to the content of this guide. You can find the full history on the <a href="https://github.com/MisterPhilip/universal-analytics-migration">Github repo</a>.</p>
+    <dl>
+        <dt><time datetime="2014-04-25">Apr 25 2014</time></dt>
+        <dd>Added remarketing configuration</dd>
+
+        <dt><time datetime="2014-04-23">Apr 23, 2014</time></dt>
+        <dd>Updated to reflect that analytics.js is now out of beta</dd>
+
+        <dt><time datetime="2013-10-02">Oct 02, 2013</time></dt>
+        <dd>Added a few extra comments within some of the code blocks</dd>
+        
+        <dt><time datetime="2013-10-01">Oct 01, 2013</time></dt>
+        <dd>Added <a href="./ecommerce#_clearTrans">_clearTrans</a></dd>
+        
+        <dt><time datetime="2013-09-27">Sep 27, 2013</time></dt>
+        <dd>Clarified this is <em>not</em> about data migration, just code migrations</dd>
+        
+        <dt><time datetime="2013-09-24">Sep 24, 2013</time></dt>
+        <dd>Fixed Ecommerce code samples to include the price property</dd>
+        
+        <dt><time datetime="2013-08-01">Aug 01, 2013</time></dt>
+        <dd>Added <a href="./basics#multipleAccounts">tracker name property</a></dd>
+    </dl>
 </section>
 {% endblock %}
