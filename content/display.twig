@@ -1,0 +1,50 @@
+{% extends "main_layout.twig" %}
+{% set current_page = 'display' %}
+{% block content %}
+<h2>Display Features</h2>
+<p>This can be used to enable <a href="https://support.google.com/analytics/answer/3450482?hl=en&ref_topic=3413645&rd=1">display Advertising Features in Google Analytics</a>, such as <a href="https://support.google.com/analytics/answer/2611268">Remarketing</a>, <a href="https://support.google.com/analytics/answer/2799357">Demographics and Interest Reporting</a>, and more.
+{{ submenu ({
+	'Cookie Name' : 'cookieName',
+	'Multiple Trackers' : 'multipleTrackers'
+}) }}
+
+<section id="note">
+	<div data-alert class="alert-box">In analytics.js, you need to include the following line of code when you initialize your Google Analytics object. It's important that you require the plugin after creating the tracker and before sending the pageview.</div>
+	<figure>
+		<figcaption>
+			analytics.js
+		</figcaption>
+		<pre><code>ga('require', 'displayfeatures');</code></pre>
+	</figure>
+	<p>Below is an example of where you should include it:</p>
+	<figure>
+		<figcaption>
+			analytics.js
+		</figcaption>
+		<pre><code>ga('create', 'UA-XXXXX-Y');
+		ga('require', 'displayfeatures');
+		ga('send', 'pageview');
+		</code></pre>
+	</figure>
+</section>
+<section id="cookieName">
+	<h3>Changing the Cookie Name</h3>
+	<p>The default cookie name is _dc. You can change this by sedding the <pre>cookieName</pre> option when you require the plugin.
+	<pre><code>ga('require', 'displayfeatures', undefined, { 
+		cookieName: 'display_features_cookie'
+	});</code></pre>
+</section>
+<section id="multipleTrackers">
+	<h3>Using Multiple Trackers</h3>
+	<p>To use the display features plugin wiht multiple trackers, prepend the require call with the tracker name.
+	<pre><code>//Create a tracker named 'foo' for property UA-XXXXX-Y
+	ga('create', 'UA-XXXXX-Y', {name: 'foo'});
+	ga('foo.require', displayfeatures');
+	ga('foo.send', 'pageview');
+	
+	//Create a second tracker named 'bar' for a different property UA-XXXXX-Z
+	ga('create', 'UA-XXXXX-Z', {name: 'bar'});
+	ga('bar.require', 'displayfeatures');
+	ga('bar.send', 'pageview');</code></pre>
+</section>
+{% endblock %}
